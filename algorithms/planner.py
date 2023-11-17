@@ -81,6 +81,7 @@ class Planner:
         #       policy[state] = action
         #   return policy[s]
         pi = lambda s: {s:a for s, a in enumerate(np.argmax(Q, axis=1))}[s]
+        print(pi)
         return V, V_track, pi
 
     @print_runtime
