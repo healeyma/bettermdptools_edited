@@ -31,6 +31,7 @@ class Planner:
 
     @print_runtime
     def value_iteration(self, gamma=1.0, n_iters=1000, theta=1e-10):
+        print("this is actually different now")
         """
         PARAMETERS:
 
