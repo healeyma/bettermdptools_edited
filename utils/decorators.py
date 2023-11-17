@@ -9,7 +9,7 @@ def print_runtime(func):
         value = func(*args, **kwargs)
         end = time.time()
         running_time = end - start
-        print("runtime = %.2f seconds" % running_time)
+        print("runtime = %.2f seconds and things have been edited" % running_time)
         return value
     return wrapper_print_runtime
 
