@@ -146,7 +146,7 @@ class RL:
         if nA is None:
             nA=self.env.action_space.n
         pi_track = []
-        state_visited = np.full(nS+1, False)                
+        state_visited = np.full(nS, False)                
         Q = np.zeros((nS, nA), dtype=np.float64)
         #Q = -np.finfo(float).eps*(np.ones((nS, nA), dtype = np.float64))
         #Q = range(nS) * np.ones((nS, nA), dtype=np.float64)
@@ -178,9 +178,9 @@ class RL:
             state, info = self.env.reset()
             done = False
             state = convert_state_obs(state, done)
-            state_visited[int(state)-1] = True
+            state_visited[int(state)] = True
             while not done:
-                state_visited[int(state) - 1] = True
+                state_visited[int(state)] = True
                 if self.render:
                     warnings.warn("Occasional render has been deprecated by openAI.  Use test_env.py to render.")
                 action = select_action(state, Q, epsilons[e])
