@@ -152,7 +152,7 @@ class RL:
         #Q = np.ones((nS, nA), dtype = np.float64)
         #Q_track = np.zeros((n_episodes, nS, nA), dtype=np.float64)
         #Q_track = range(nS)* np.ones((n_episodes, nS, nA), dtype=np.float64)
-        Q_track = np.finfo(float).eps* (np.ones((n_episodes, nS, nA), dtype = np.float64)))
+        Q_track = np.finfo(float).eps* (np.ones((n_episodes, nS, nA), dtype = np.float64))
         #Q_track = (np.ones((n_episodes, nS, nA), dtype = np.float64))
         # Explanation of lambda:
         # def select_action(state, Q, epsilon):
