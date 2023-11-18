@@ -200,7 +200,7 @@ class RL:
         #       policy[state] = action
         #   return policy[s]
         pi = lambda s: {s: a for s, a in enumerate(np.argmax(Q, axis=1))}[s]
-        return Q, V, pi, Q_track, pi_track
+        return Q, V, pi, Q_track, pi_track, alphas, epsilons
 
     @print_runtime
     def sarsa(self,
