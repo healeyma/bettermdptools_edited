@@ -146,7 +146,7 @@ class RL:
         if nA is None:
             nA=self.env.action_space.n
         pi_track = []
-        state_visited = numpy.full((len(nS)), False)                
+        state_visited = np.full((len(nS)), False)                
         Q = np.zeros((nS, nA), dtype=np.float64)
         #Q = -np.finfo(float).eps*(np.ones((nS, nA), dtype = np.float64))
         #Q = range(nS) * np.ones((nS, nA), dtype=np.float64)
@@ -207,7 +207,7 @@ class RL:
         #       policy[state] = action
         #   return policy[s]
         pi = lambda s: {s: a for s, a in enumerate(np.argmax(Q, axis=1))}[s]
-        return Q, V, pi, Q_track, pi_track, alphas, epsilons
+        return Q, V, pi, Q_track, pi_track, alphas, epsilons, state_visited
 
     @print_runtime
     def sarsa(self,
