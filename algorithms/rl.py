@@ -147,9 +147,11 @@ class RL:
             nA=self.env.action_space.n
         pi_track = []
         #Q = np.zeros((nS, nA), dtype=np.float64)
-        Q = np.finfo(float).eps*(np.ones((nS, nA), dtype = np.float64))
+        #Q = np.finfo(float).eps*(np.ones((nS, nA), dtype = np.float64))
+        Q = nS * np.ones((nS, nA), dtype=np.float64)
         #Q_track = np.zeros((n_episodes, nS, nA), dtype=np.float64)
-        Q_track = np.finfo(float).eps* (np.ones((n_episodes, nS, nA), dtype = np.float64))     
+        Q_track = nS* np.ones((n_episodes, nS, nA), dtype=np.float64)
+        #Q_track = np.finfo(float).eps* (np.ones((n_episodes, nS, nA), dtype = np.float64))     
         # Explanation of lambda:
         # def select_action(state, Q, epsilon):
         #   if np.random.random() > epsilon:
