@@ -85,7 +85,9 @@ class RL:
                    min_epsilon=0.1,
                    epsilon_decay_ratio=0.9,
                    n_episodes=10000,
-                   track_suppress_rate = 1):
+                   track_suppress_rate = 1,
+                   heuristic = False
+                   dimen = 1):
         """
         Parameters
         ----------------------------
@@ -149,10 +151,21 @@ class RL:
         pi_track = []
         state_visited = np.full(nS, 0)                
         Q = np.zeros((nS, nA), dtype=np.float64)
+        Q_track = np.zeros((round(n_episodes/track_suppress_rate), nS, nA), dtype=np.float64)
+
+        if heuristic = True:
+            #want more negative if further from the goal
+            #otherwise the end points (ie.lakes) will be very positive always
+            for i in range(nS):
+                row_val = i/dimen
+                col_val = i%dimen
+                Q[i][:] = -1*((dimen - row_val) + (dimen -col_val))
+                
+            
         #Q = -np.finfo(float).eps*(np.ones((nS, nA), dtype = np.float64))
         #Q = range(nS) * np.ones((nS, nA), dtype=np.float64)
         #Q = np.ones((nS, nA), dtype = np.float64)
-        Q_track = np.zeros((round(n_episodes/track_suppress_rate), nS, nA), dtype=np.float64)
+
         #Q_track = range(nS)* np.ones((n_episodes, nS, nA), dtype=np.float64)
         #Q_track = -np.finfo(float).eps* (np.ones((n_episodes, nS, nA), dtype = np.float64))
         #Q_track = (np.ones((n_episodes, nS, nA), dtype = np.float64))
