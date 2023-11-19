@@ -153,7 +153,7 @@ class RL:
         Q = np.zeros((nS, nA), dtype=np.float64)
         Q_track = np.zeros((round(n_episodes/track_suppress_rate), nS, nA), dtype=np.float64)
 
-        if heuristic = True:
+        if heuristic:
             #want more negative if further from the goal
             #otherwise the end points (ie.lakes) will be very positive always
             for i in range(nS):
