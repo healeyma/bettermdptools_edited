@@ -196,7 +196,7 @@ class RL:
                 Q[state][action] = Q[state][action] + alphas[e] * td_error
                 state = next_state
             if e%track_suppress_rate == 0:
-                Q_track[e] = Q
+                Q_track[round(e/track_suppress_rate)] = Q
                 pi_track.append(np.argmax(Q, axis=1))
             self.render = False
             self.callbacks.on_episode_end(self)
