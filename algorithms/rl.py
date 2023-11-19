@@ -159,7 +159,8 @@ class RL:
             for i in range(nS):
                 row_val = i/dimen
                 col_val = i%dimen
-                Q[i][:] = -1*((dimen - row_val) + (dimen -col_val))
+                Q[i][:] = ((row_val) + (col_val))/(dimen+dimen)
+                #Q[i][:] = -1*((dimen - row_val) + (dimen -col_val))
                 
             
         #Q = -np.finfo(float).eps*(np.ones((nS, nA), dtype = np.float64))
