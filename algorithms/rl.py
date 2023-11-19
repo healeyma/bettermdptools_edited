@@ -86,7 +86,7 @@ class RL:
                    epsilon_decay_ratio=0.9,
                    n_episodes=10000,
                    track_suppress_rate = 1,
-                   heuristic = False
+                   heuristic = False,
                    dimen = 1):
         """
         Parameters
