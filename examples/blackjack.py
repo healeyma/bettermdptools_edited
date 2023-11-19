@@ -35,6 +35,7 @@ class Blackjack:
         f = os.path.join(current_dir, file_name)
         try:
             self._P = pickle.load(open(f, "rb"))
+	    print("Pickle load succeeded")
         except IOError:
             print("Pickle load failed.  Check path", f)
         self._n_actions = self.env.action_space.n
