@@ -30,7 +30,7 @@ class Blackjack:
             -1 if done else int(f"{state[0] + 6}{(state[1] - 2) % 10}") if state[2] else int(
                 f"{state[0] - 4}{(state[1] - 2) % 10}"))
         # Transitions and rewards matrix from: https://github.com/rhalbersma/gym-blackjack-v1
-        current_dir = os.path.dirname(__file__)
+        current_dir = os.path.dirname('.')
         file_name = 'blackjack-envP'
         f = os.path.join(current_dir, file_name)
         try:
