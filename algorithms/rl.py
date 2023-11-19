@@ -84,7 +84,8 @@ class RL:
                    init_epsilon=1.0,
                    min_epsilon=0.1,
                    epsilon_decay_ratio=0.9,
-                   n_episodes=10000):
+                   n_episodes=10000,
+                   track_suppress_rate = 1):
         """
         Parameters
         ----------------------------
@@ -151,7 +152,7 @@ class RL:
         #Q = -np.finfo(float).eps*(np.ones((nS, nA), dtype = np.float64))
         #Q = range(nS) * np.ones((nS, nA), dtype=np.float64)
         #Q = np.ones((nS, nA), dtype = np.float64)
-        Q_track = np.zeros((n_episodes, nS, nA), dtype=np.float64)
+        Q_track = np.zeros((round(n_episodes/track_suppress_rate), nS, nA), dtype=np.float64)
         #Q_track = range(nS)* np.ones((n_episodes, nS, nA), dtype=np.float64)
         #Q_track = -np.finfo(float).eps* (np.ones((n_episodes, nS, nA), dtype = np.float64))
         #Q_track = (np.ones((n_episodes, nS, nA), dtype = np.float64))
@@ -194,8 +195,9 @@ class RL:
                 td_error = td_target - Q[state][action]
                 Q[state][action] = Q[state][action] + alphas[e] * td_error
                 state = next_state
-            Q_track[e] = Q
-            pi_track.append(np.argmax(Q, axis=1))
+            if e%track_suppress_rate == 0:
+                Q_track[e] = Q
+                pi_track.append(np.argmax(Q, axis=1))
             self.render = False
             self.callbacks.on_episode_end(self)
 
