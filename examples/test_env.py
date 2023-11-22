@@ -55,7 +55,7 @@ class TestEnv:
         n_actions = env.action_space.n
         test_scores = np.full([n_iters], np.nan)
         for i in range(0, n_iters):
-            seed_val = seeds[i]
+            seed_val = int(seeds[i])
             state, info = env.reset(seed = seed_val)
             done = False
             state = convert_state_obs(state, done)
