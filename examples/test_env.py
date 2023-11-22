@@ -19,7 +19,7 @@ class TestEnv:
         pass
 
     @staticmethod
-    def test_env(env, render=True, n_iters=10, pi=None, user_input=False, convert_state_obs=lambda state, done: state, seeds = np.ones(n_iters)):
+    def test_env(env, render=True, n_iters=10, pi=None, user_input=False, convert_state_obs=lambda state, done: state, seeds = np.ones(10)):
         """
         Parameters
         ----------------------------
