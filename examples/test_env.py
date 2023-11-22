@@ -19,7 +19,7 @@ class TestEnv:
         pass
 
     @staticmethod
-    def test_env(env, render=True, n_iters=10, pi=None, user_input=False, convert_state_obs=lambda state, done: state):
+    def test_env(env, render=True, n_iters=10, pi=None, user_input=False, convert_state_obs=lambda state, done: state, seeds = np.ones(n_iters)):
         """
         Parameters
         ----------------------------
@@ -55,7 +55,8 @@ class TestEnv:
         n_actions = env.action_space.n
         test_scores = np.full([n_iters], np.nan)
         for i in range(0, n_iters):
-            state, info = env.reset()
+            seed_val = seeds[i]
+            state, info = env.reset(seed = seed_val)
             done = False
             state = convert_state_obs(state, done)
             total_reward = 0
