@@ -31,7 +31,7 @@ class Planner:
 
     @print_runtime
     def value_iteration(self, gamma=1.0, n_iters=1000, theta=1e-10):
-        print("this is actually different now")
+        #print("this is actually different now")
         """
         PARAMETERS:
 
@@ -82,7 +82,7 @@ class Planner:
         #       policy[state] = action
         #   return policy[s]
         pi = lambda s: {s:a for s, a in enumerate(np.argmax(Q, axis=1))}[s]
-        print(pi)
+        #print(pi)
         return V, V_track, pi
 
     @print_runtime
