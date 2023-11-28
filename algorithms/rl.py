@@ -149,8 +149,7 @@ class RL:
         if nA is None:
             nA=self.env.action_space.n
         pi_track = []
-        state_visited = np.full(nS, 0)
-        state_visited = np.dstack((state_visited, state_visited))
+        state_visited = np.zeros(nS, nA)
         Q = np.zeros((nS, nA), dtype=np.float64)
         Q_track = np.zeros((round(n_episodes/track_suppress_rate), nS, nA), dtype=np.float64)
 
@@ -199,7 +198,7 @@ class RL:
                 if self.render:
                     warnings.warn("Occasional render has been deprecated by openAI.  Use test_env.py to render.")
                 action = select_action(state, Q, epsilons[e])
-                state_visited[int(state)][action] = state_visited[int(state)][action] + 1
+                state_visited[int(state)][int(action)] = state_visited[int(state)][int(action)] + 1
                 next_state, reward, terminated, truncated, _ = self.env.step(action)
                 if truncated:
                     warnings.warn("Episode was truncated.  Bootstrapping 0 reward.")
