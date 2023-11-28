@@ -149,7 +149,7 @@ class RL:
         if nA is None:
             nA=self.env.action_space.n
         pi_track = []
-        state_visited = np.zeros(nS, nA)
+        state_visited = np.zeros((nS, nA))
         Q = np.zeros((nS, nA), dtype=np.float64)
         Q_track = np.zeros((round(n_episodes/track_suppress_rate), nS, nA), dtype=np.float64)
 
