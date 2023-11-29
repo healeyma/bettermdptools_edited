@@ -87,7 +87,7 @@ class RL:
                    n_episodes=10000,
                    track_suppress_rate = 1,
                    heuristic = False,
-                   dimen = 1):
+                   dimen = 1, seed_val = 21):
         """
         Parameters
         ----------------------------
@@ -144,6 +144,7 @@ class RL:
         pi_track {list}, len(n_episodes):
             Log of complete policy for each episode
         """
+        np.random.seed(seed = seed_val)
         if nS is None:
             nS=self.env.observation_space.n
         if nA is None:
